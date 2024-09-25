@@ -1,1 +1,1 @@
-# Projeto-Tecnicas-de-programa-o
+# Projeto-Tecnicas-de-programacao

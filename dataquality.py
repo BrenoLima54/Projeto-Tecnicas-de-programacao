@@ -2,16 +2,30 @@
 
 # 1 . Importar bibliotecas
 import pandas as pd
-# import tabulate as tab # essa bibliote permite formatar o print do df
+import numpy as np
+import matplotlib.pyplot as plt 
+import tabulate as tab # essa bibliote permite formatar o print do df
 # import seaborn as sns # caso seja necessário para gráficos
 
 # 2. Cirar classe DataQuality
 class DataQuality:
     def __init__(self, diretorio:str) -> None:
-        # o construtor recebe um diretorio em formato de string
         self.df = pd.read_csv(diretorio) # leitura do diretorio
-        # self.df_categ = self.df.select_dtypes(exclude=np.number)
-        # self.df_num = self.df.select_dtypes(include=np.number)
+        self.df_categ = self.df.select_dtypes(exclude=np.number)
+        self.df_num = self.df.select_dtypes(include=np.number)
+
+    def header(self, n=5) -> None:
+        print("Dataframe - Cabeçalho:")
+        head_df = self.df.head(n)
+        print(tab.tabulate(head_df, headers='keys', showindex='always' , tablefmt='fancy_grid'))
+
+        print("\nDataframe Categórico:")
+        categ_df = self.df_categ.head(n)
+        print(tab.tabulate(categ_df, headers='keys', showindex='always' , tablefmt='fancy_grid'))
+
+        print("\nDataframe Numérico:")
+        num_df = self.df_num.head(n)
+        print(tab.tabulate(num_df, headers='keys', showindex='always' , tablefmt='fancy_grid'))
         
     # 3. Criar métodos: 
     # Mostrar Cabeçalho (método head())

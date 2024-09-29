@@ -44,10 +44,17 @@ class DataQuality:
         print(tabulate(sample_df, headers="keys", tablefmt="fancy_grid"))
     
     def count_nulls(self) -> None:
-        print("Contagem de valores nulos:")
-        df_nulls = self.df.isnull().sum().reset_index()
-        df_nulls.columns = ['Coluna', 'Quantidade']
-        print(tabulate(df_nulls, headers='keys', showindex='never' , tablefmt='fancy_grid'))
+        display_markdown('''### Dados nulos''', raw=True)
+        df_nulos= self.df.isnull().sum().reset_index()
+        df_nulos.columns = ["Coluna", "Quantidade"]
+        total = df_nulos["Quantidade"].sum()
+        display_markdown(f'''#### Quantidade total de dados nulos: {total}''', raw=True)
+
+        df_nulos["Frequência (%)"] = (df_nulos["Quantidade"] / total).mul(100).round(2)
+        if df_nulos.empty:
+            display_markdown(f'''- Não existem dados nulos no DataFrame.''', raw=True)
+        else:
+            print(tabulate(df_nulos[df_nulos["Quantidade"] > 0], headers="keys", tablefmt="fancy_grid"))
 
     def count_unique(self) -> None:
         print("Contagem de valores únicos:")
@@ -93,7 +100,7 @@ class DataQuality:
 
         self.numerical_analyzes()
         self.categorical_analyzes()
-        
+
     # 3. Criar métodos: 
     # Mostrar Cabeçalho (método head())
     # Mostrar fim do df (método tail())

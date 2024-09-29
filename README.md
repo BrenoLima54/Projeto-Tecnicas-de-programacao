@@ -1,40 +1,59 @@
-# Data Quality Analysis
+# Projeto de Análise de Dados
 
-## Projeto desenvolvido por:
-- **Breno Lima** - https://github.com/BrenoLima54
-- **Fernando Soutto** - https://github.com/FeSoutto
-- **Raul Felipe** - https://github.com/raulcrvlh
+## Autores
+- [Breno Lima](https://github.com/BrenoLima54/)
+- [Fernando Soutto](https://github.com/FeSoutto)
+- [Raul Carvalho](https://github.com/raulcrvlh/)
 
-Este projeto tem como objetivo fornecer uma análise de qualidade de dados de forma rápida e eficiente utilizando a linguagem Python. A classe `DataQuality` permite realizar diversas análises e gerar relatórios detalhados sobre um conjunto de dados fornecido.
+## Proposta do Projeto
 
-## Funcionalidades
+O objetivo deste projeto é criar um módulo de **Data Quality** utilizando Programação Orientada a Objetos (POO). Esse módulo, ao ser importado para um Jupyter Notebook, permitirá a criação de relatórios automatizados, semelhantes ao que pandas-profiling, YData-profiling e SweetViz oferecem.
 
-- **Informações Gerais**: Exibe o número de linhas e colunas do DataFrame, além de listar as colunas categóricas e numéricas.
-- **Primeiras Linhas**: Mostra as primeiras `n` linhas do DataFrame.
-- **Últimas Linhas**: Mostra as últimas `n` linhas do DataFrame.
-- **Amostra Aleatória**: Exibe uma amostra aleatória de `n` linhas do DataFrame.
-- **Contagem de Dados Nulos**: Conta e exibe a quantidade de valores nulos em cada coluna.
-- **Contagem de Valores Únicos**: Conta e exibe a quantidade de valores únicos em cada coluna.
-- **Valores Mais Comuns**: Mostra os valores mais comuns em cada coluna categórica.
-- **Análise Numérica**: Gera estatísticas descritivas e histogramas para colunas numéricas.
-- **Análise Categórica**: Exibe a contagem de valores para cada coluna categórica.
-- **Relatório Completo**: Gera um relatório completo com todas as análises acima.
+O módulo desenvolvido terá métodos específicos para análise de qualquer dataset, como:
 
-## Como Usar
+- Contagem de valores nulos
+- Contagem de valores únicos
+- `.value_counts()` em colunas categóricas
+- `.describe()` em colunas numéricas
+- Gráficos de distribuição de colunas categóricas e numéricas
+- ...
 
-1. Clone o repositório para sua máquina local.
-2. Instale as dependências necessárias:
-    ```bash
-    pip install pandas numpy matplotlib tabulate ipython
-    ```
-3. Importe a classe `DataQuality`, crie uma instância passando o caminho do arquivo CSV e gere o relatório:
+### Objetivo
 
-    ```python
-    from dataquality import DataQuality
+Utilizando o módulo, realizaremos a análise de um dataset escolhido no Kaggle.
 
-    dq = DataQuality('caminho/para/seu/arquivo.csv')
-    dq.report()
-  
+## Métodos Desenvolvidos
 
+Aqui estão os métodos que foram implementados no módulo:
 
+- **`quick_info()`**: Mostra informações gerais sobre o dataset
+![image](images/quick_info.png)
+- **`first_rows()`**: Por padrão, exibe as 5 primeiras linhas do dataset
+- **`last_rows()`**: Por padrão, exibe as últimas 5 linhas do dataset
+![image](images/first_rows_and_last_rows.png)
+- **`sample_rows()`**: Por padrão, exibe amostra de 5 linhas do dataset
+- **`count_nulls()`**: Contagem de dados nulos do dataset
+- **`count_unique()`**: Contagem dos valores únicos no dataset
+![image](images/count_nulls_and_count_unique.png)
+- **`most_common()`**: Exibe os dados mais comuns por coluna
+- **`numerical_analyzes()`**: Realiza uma análise das colunas numéricas
+![image](images/numerical_analyzes.png)
+- **`categorical_analyzes()`**: Realiza uma análise das colunas categóricas
+- **`report()`**: Gera um relatório completo de análise
 
+## Exemplo de Utilização
+
+Para utilizar o módulo, crie um arquivo `.ipynb` e siga as etapas abaixo:
+
+```bash
+pip install pandas numpy matplotlib tabulate Ipython
+```
+
+```python
+from dataquality import DataQuality
+
+# Carregar o dataset
+df = DataQuality("datasets/nome_do_seu_dataset.csv")
+
+# Gerar o relatório
+df.report()

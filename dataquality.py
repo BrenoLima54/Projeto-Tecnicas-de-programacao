@@ -57,10 +57,17 @@ class DataQuality:
             print(tabulate(df_nulls[df_nulls["Quantidade"] > 0], headers="keys", tablefmt="fancy_grid"))
 
     def count_unique(self) -> None:
-        print("Contagem de valores únicos:")
+        display_markdown('''### Dados unicos''', raw=True)
         df_uniques = self.df.nunique().reset_index()
         df_uniques.columns = ['Coluna', 'Quantidade']
-        print(tabulate(df_uniques, headers='keys', showindex='never' , tablefmt='fancy_grid'))
+        total = df_uniques["Quantidade"].sum()
+        display_markdown(f'''### Quantidade total de dados unicos: {total}''', raw= True)
+        
+        df_uniques["Frequências (%)"] = (df_uniques["Quantidade"] / total).mul(100).round(2)
+        if df_uniques.empty:
+            display_markdown(f'''- Não existem dados nulos no DataFrame.''', raw= True)
+        else:
+            print(tabulate(df_uniques, headers='keys', showindex='never' , tablefmt='fancy_grid'))
 
     def most_commom(self):
         display_markdown('''### Dados mais comuns por coluna''', raw=True)

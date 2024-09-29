@@ -15,6 +15,19 @@ class DataQuality:
         self.df_categ = self.df.select_dtypes(exclude=np.number)
         self.df_num = self.df.select_dtypes(include=np.number)
 
+    def quick_info(self):
+        display_markdown(f'''### Informações Gerais:''', raw=True)
+        display_markdown(f'''- **Linhas:** {len(self.df)}''', raw=True)
+        display_markdown(f'''- **Colunas:** {len(self.df.columns)}''',raw=True)
+
+        display_markdown('''#### Colunas Categóricas:''', raw=True)
+        for col_categ in self.df_cat.columns:
+            display_markdown(f'''- {col_categ}''', raw=True)
+
+        display_markdown('''#### Colunas Numéricas:''', raw=True)
+        for col_num in self.df_num.columns:
+            display_markdown(f'''- {col_num}''', raw=True)
+
     def firts_rows(self, n=5):
         display_markdown(f'''### Primeiras {n} linhas:''', raw=True)
         head_df = self.df.head(n).reset_index()

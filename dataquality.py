@@ -40,19 +40,19 @@ class DataQuality:
 
     def sample_rows(self, n=5):
         display_markdown(f'''### Amostra de {n} linhas:''', raw=True)
-        sample_rows = self.df.sample(n, random_state=np.random.seed(42))
-        print(tabulate(sample_rows, headers="keys", tablefmt="fancy_grid"))
+        sample_df = self.df.sample(n, random_state=np.random.seed(42))
+        print(tabulate(sample_df, headers="keys", tablefmt="fancy_grid"))
     
     def count_nulls(self) -> None:
         print("Contagem de valores nulos:")
-        df_nulos = self.df.isnull().sum().reset_index()
-        df_nulos.columns = ['Coluna', 'Quantidade']
+        df_nulls = self.df.isnull().sum().reset_index()
+        df_nulls.columns = ['Coluna', 'Quantidade']
         print(tabulate(df_nulos, headers='keys', showindex='never' , tablefmt='fancy_grid'))
 
     def count_unique(self) -> None:
         print("Contagem de valores únicos:")
-        df_unicos = self.df.nunique().reset_index()
-        df_unicos.columns = ['Coluna', 'Quantidade']
+        df_uniques = self.df.nunique().reset_index()
+        df_uniques.columns = ['Coluna', 'Quantidade']
         print(tabulate(df_unicos, headers='keys', showindex='never' , tablefmt='fancy_grid'))
 
         

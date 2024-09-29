@@ -1,9 +1,9 @@
 # Data Quality Analysis
 
 ## Projeto desenvolvido por:
-Breno Lima - https://github.com/BrenoLima54
-Fernando Soutto - https://github.com/FeSoutto
-Raul Felipe - https://github.com/raulcrvlh
+- **Breno Lima** - https://github.com/BrenoLima54
+- **Fernando Soutto** - https://github.com/FeSoutto
+- **Raul Felipe** - https://github.com/raulcrvlh
 
 Este projeto tem como objetivo fornecer uma análise de qualidade de dados de forma rápida e eficiente utilizando a linguagem Python. A classe `DataQuality` permite realizar diversas análises e gerar relatórios detalhados sobre um conjunto de dados fornecido.
 

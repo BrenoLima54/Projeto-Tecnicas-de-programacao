@@ -27,11 +27,14 @@ Este projeto tem como objetivo fornecer uma análise de qualidade de dados de fo
     ```bash
     pip install pandas numpy matplotlib tabulate ipython
     ```
-3. Importe a classe `DataQuality` e crie uma instância passando o caminho do arquivo CSV:
+3. Importe a classe `DataQuality`, crie uma instância passando o caminho do arquivo CSV e gere o relatório:
 
     ```python
     from dataquality import DataQuality
 
     dq = DataQuality('caminho/para/seu/arquivo.csv')
     dq.report()
-  ```
+  
+
+
+

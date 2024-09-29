@@ -55,6 +55,21 @@ class DataQuality:
         df_uniques.columns = ['Coluna', 'Quantidade']
         print(tabulate(df_uniques, headers='keys', showindex='never' , tablefmt='fancy_grid'))
 
+    def most_commom(self):
+        display_markdown('''### Dados mais comuns por coluna''', raw=True)
+
+        for col in self.df_cat.columns:
+            df_aux = self.df_cat[col].mode()
+            display_markdown(f''' - **{col}:** {df_aux[0]}''', raw=True)
+
+    def numerical_analyzes(self):
+        for col in self.df_num:
+            display_markdown(f'''### {col} - Coluna Numérica''', raw=True)
+
+            df_num_descbrie = self.df_num[col].describe().round(2).reset_index()
+            print(tabulate(df_num_descbrie, headers="keys", tablefmt="fancy_grid"))
+            plt.hist(self.df_num[col])
+            plt.show()
         
     # 3. Criar métodos: 
     # Mostrar Cabeçalho (método head())

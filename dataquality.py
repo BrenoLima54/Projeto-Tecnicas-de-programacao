@@ -12,7 +12,7 @@ from IPython.display import display_markdown
 class DataQuality:
     def __init__(self, diretorio:str) -> None:
         self.df = pd.read_csv(diretorio) # leitura do diretorio
-        self.df_categ = self.df.select_dtypes(exclude=np.number)
+        self.df_cat = self.df.select_dtypes(exclude=np.number)
         self.df_num = self.df.select_dtypes(include=np.number)
 
     def quick_info(self):
@@ -62,7 +62,7 @@ class DataQuality:
     # Somatória dos valores nulos
     # Somatória dos valores únicos
     # Análise dos dados categóricos geral ou por coluna (podemos definir a melhor forma)
-        # df_categ.value_counts()
+        # df_cat.value_counts()
     # Análise dos dados numéricos 
         # df_num.describe()
         # df_num.corr() -> da pra fazer heatmap

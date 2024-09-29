@@ -26,6 +26,19 @@ class DataQuality:
         print("\nDataframe Numérico:")
         num_df = self.df_num.head(n)
         print(tab.tabulate(num_df, headers='keys', showindex='always' , tablefmt='fancy_grid'))
+    
+    def count_nulls(self) -> None:
+        print("Contagem de valores nulos:")
+        df_nulos = self.df.isnull().sum().reset_index()
+        df_nulos.columns = ['Coluna', 'Quantidade']
+        print(tab.tabulate(df_nulos, headers='keys', showindex='never' , tablefmt='fancy_grid'))
+
+    def count_unique(self) -> None:
+        print("Contagem de valores únicos:")
+        df_unicos = self.df.nunique().reset_index()
+        df_unicos.columns = ['Coluna', 'Quantidade']
+        print(tab.tabulate(df_unicos, headers='keys', showindex='never' , tablefmt='fancy_grid'))
+
         
     # 3. Criar métodos: 
     # Mostrar Cabeçalho (método head())

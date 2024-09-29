@@ -70,6 +70,29 @@ class DataQuality:
             print(tabulate(df_num_descbrie, headers="keys", tablefmt="fancy_grid"))
             plt.hist(self.df_num[col])
             plt.show()
+    
+    def categorical_analyzes(self):
+        for col in self.df_cat:
+            display_markdown(f'''### {col} - Coluna Categórica''', raw=True)
+
+            df_aux = self.df_cat[col].value_counts().reset_index()
+            df_aux.columns = ["Coluna", "Quantidade"]
+            print(tabulate(df_aux, headers="keys", tablefmt="fancy_grid"))
+
+    def report(self):
+        display_markdown('''# **Relatório de Análises Genéricas**''', raw=True)
+        self.quick_info()
+
+        self.firts_rows()
+        self.last_rows()
+        self.sample_rows()
+
+        self.count_nulls()
+        self.count_unique()
+        self.most_commom()
+
+        self.numerical_analyzes()
+        self.categorical_analyzes()
         
     # 3. Criar métodos: 
     # Mostrar Cabeçalho (método head())

@@ -45,16 +45,16 @@ class DataQuality:
     
     def count_nulls(self) -> None:
         display_markdown('''### Dados nulos''', raw=True)
-        df_nulos= self.df.isnull().sum().reset_index()
-        df_nulos.columns = ["Coluna", "Quantidade"]
-        total = df_nulos["Quantidade"].sum()
+        df_nulls= self.df.isnull().sum().reset_index()
+        df_nulls.columns = ["Coluna", "Quantidade"]
+        total = df_nulls["Quantidade"].sum()
         display_markdown(f'''#### Quantidade total de dados nulos: {total}''', raw=True)
 
-        df_nulos["Frequência (%)"] = (df_nulos["Quantidade"] / total).mul(100).round(2)
-        if df_nulos.empty:
+        df_nulls["Frequência (%)"] = (df_nulls["Quantidade"] / total).mul(100).round(2)
+        if df_nulls.empty:
             display_markdown(f'''- Não existem dados nulos no DataFrame.''', raw=True)
         else:
-            print(tabulate(df_nulos[df_nulos["Quantidade"] > 0], headers="keys", tablefmt="fancy_grid"))
+            print(tabulate(df_nulls[df_nulls["Quantidade"] > 0], headers="keys", tablefmt="fancy_grid"))
 
     def count_unique(self) -> None:
         print("Contagem de valores únicos:")

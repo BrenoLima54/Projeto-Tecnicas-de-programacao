@@ -46,7 +46,7 @@ Aqui estão os métodos que foram implementados no módulo:
 Para utilizar o módulo, crie um arquivo `.ipynb` e siga as etapas abaixo:
 
 ```bash
-pip install pandas numpy matplotlib tabulate Ipython
+pip install pandas numpy matplotlib tabulate IPython
 ```
 
 ```python
